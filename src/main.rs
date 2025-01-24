@@ -17,6 +17,7 @@ async fn api() -> Result<(), axum::Error> {
     //Shared Object
     let shared_state: Arc<RwLock<DashiModel>> = Arc::new(RwLock::new(DashiModel {}));
     //Router
+    //* ここの型を`Router<()>`にする理由がわからず、困っています...。 *//
     let app: Router<()> = Router::new()
         .route("/", get(ping))
         .merge(route::root::root_route())
